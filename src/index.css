@@ -17,6 +17,7 @@
     --font-clean: 'Outfit', sans-serif;
     --section-pad: clamp(80px, 12vh, 160px);
     --transition-base: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --btn-hover-shadow: rgba(0, 0, 0, 0.8);
 }
 
 .light-mode {
@@ -30,6 +31,7 @@
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(0, 0, 0, 0.1);
     --glass-border-hover: rgba(0, 0, 0, 0.2);
+    --btn-hover-shadow: rgba(255, 255, 255, 0.8);
 }
 
 *,
@@ -435,7 +437,7 @@ img {
 
 .hero-pill-btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 0, 85, 0.5);
+    box-shadow: 0 15px 40px var(--btn-hover-shadow);
 }
 
 
@@ -488,7 +490,7 @@ img {
 
 .cta-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 0, 85, 0.5);
+    box-shadow: 0 15px 40px var(--btn-hover-shadow);
     border-color: var(--accent);
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
 import HollowText from './HollowText'
 
 const CERTIFICATES = [

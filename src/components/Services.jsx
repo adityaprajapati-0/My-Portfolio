@@ -4,8 +4,8 @@ import HollowText from './HollowText'
 const SERVICES = [
   {
     number: '01',
-    title: '3D MODELING',
-    desc: 'Creation of detailed objects, characters, or environments, tailored to specific client needs, ideal for games, products, and visualizations.',
+    title: 'GRAPHIC DESIGN',
+    desc: 'Impactful visual storytelling through brand identity, logo design, and marketing collateral that captures your unique vision.',
   },
   {
     number: '02',

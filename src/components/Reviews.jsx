@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
 
 const REVIEWS_TOP = [
   { name: "John Smith", role: "CEO @ TechFlow", content: "Exceptional quality and attention to detail. The 3D models were exactly what we needed." },

@@ -14,19 +14,9 @@ export default function SpaceBackground() {
     const STAR_COUNT = isMobile ? 400 : 1200
 
     const canvas = canvasRef.current
-    const ctx = canvas.getContext('2d', { alpha: false }) 
+    const ctx = canvas.getContext('2d') 
     let w = window.innerWidth
     let h = window.innerHeight
-    let isVisible = true
-
-    // Pause animation when off-screen
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting
-      },
-      { threshold: 0.01 }
-    )
-    observer.observe(canvas)
 
     const resize = () => {
       w = window.innerWidth
@@ -61,45 +51,43 @@ export default function SpaceBackground() {
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     const animate = () => {
-      if (isVisible) {
-        ctx.clearRect(0, 0, w, h)
+      ctx.clearRect(0, 0, w, h)
 
-        const mx = mouseRef.current.x * 30
-        const my = mouseRef.current.y * 30
-        const scrollOffset = scrollRef.current * 0.15
+      const mx = mouseRef.current.x * 30
+      const my = mouseRef.current.y * 30
+      const scrollOffset = scrollRef.current * 0.15
 
-        for (let i = 0; i < starsRef.current.length; i++) {
-          const star = starsRef.current[i]
-          
-          // Move star towards viewer
-          star.z -= star.speed * 2
-          star.twinkle += 0.02
+      for (let i = 0; i < starsRef.current.length; i++) {
+        const star = starsRef.current[i]
+        
+        // Move star towards viewer
+        star.z -= star.speed * 2
+        star.twinkle += 0.02
 
-          if (star.z <= 0) {
-            star.z = 1000
-            star.x = Math.random() * w - w / 2
-            star.y = Math.random() * h - h / 2
-          }
-
-          // Project 3D to 2D with perspective
-          const perspective = 600 / star.z
-          const sx = star.x * perspective + w / 2 + mx * (star.z / 1000)
-          const sy = star.y * perspective + h / 2 + my * (star.z / 1000) - scrollOffset * star.speed
-
-          // Skip off-screen stars
-          const radius = star.size * perspective
-          if (sx < -10 || sx > w + 10 || sy < -10 || sy > h + 10) continue
-
-          const twinkleAlpha = 0.5 + 0.5 * Math.sin(star.twinkle)
-          const depthAlpha = Math.min(1, (1000 - star.z) / 600)
-          const alpha = twinkleAlpha * depthAlpha
-
-          ctx.beginPath()
-          ctx.arc(sx, sy, Math.max(0.3, radius), 0, Math.PI * 2)
-          ctx.fillStyle = star.color
-          ctx.globalAlpha = alpha
-          ctx.fill()
+        if (star.z <= 0) {
+          star.z = 1000
+          star.x = Math.random() * w - w / 2
+          star.y = Math.random() * h - h / 2
         }
+
+        // Project 3D to 2D with perspective
+        const perspective = 600 / star.z
+        const sx = star.x * perspective + w / 2 + mx * (star.z / 1000)
+        const sy = star.y * perspective + h / 2 + my * (star.z / 1000) - scrollOffset * star.speed
+
+        // Skip off-screen stars
+        const radius = star.size * perspective
+        if (sx < -10 || sx > w + 10 || sy < -10 || sy > h + 10) continue
+
+        const twinkleAlpha = 0.5 + 0.5 * Math.sin(star.twinkle)
+        const depthAlpha = Math.min(1, (1000 - star.z) / 600)
+        const alpha = twinkleAlpha * depthAlpha
+
+        ctx.beginPath()
+        ctx.arc(sx, sy, Math.max(0.3, radius), 0, Math.PI * 2)
+        ctx.fillStyle = star.color
+        ctx.globalAlpha = alpha
+        ctx.fill()
       }
       frameRef.current = requestAnimationFrame(animate)
     }
@@ -111,7 +99,6 @@ export default function SpaceBackground() {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouse)
       window.removeEventListener('scroll', handleScroll)
-      observer.disconnect()
     }
   }, [])
 

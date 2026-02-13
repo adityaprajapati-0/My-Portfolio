@@ -1827,6 +1827,10 @@ textarea.field-input {
     line-height: 1.6;
 }
 
+.light-mode .cert-modal-desc {
+    color: #000;
+}
+
 .cert-card-inner {
     display: flex;
     align-items: center;

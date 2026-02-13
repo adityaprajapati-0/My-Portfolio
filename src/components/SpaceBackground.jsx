@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 
-const STAR_COUNT = 1200
 const COLORS = ['#ffffff', '#cce5ff', '#ffe0cc', '#ffd6e7']
 
 export default function SpaceBackground() {
@@ -11,8 +10,11 @@ export default function SpaceBackground() {
   const frameRef = useRef(0)
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768
+    const STAR_COUNT = isMobile ? 400 : 1200
+
     const canvas = canvasRef.current
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d', { alpha: false }) 
     let w = window.innerWidth
     let h = window.innerHeight
 

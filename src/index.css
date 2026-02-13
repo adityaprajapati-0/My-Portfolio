@@ -1243,14 +1243,15 @@ img {
     width: 120%;
     margin-left: -10%;
     padding: 80px 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
     overflow: hidden;
     position: relative;
     z-index: 5;
     transform: rotate(-3deg);
+    transition: background var(--transition-base), border-color var(--transition-base);
     margin-top: -30px;
     margin-bottom: -30px;
 }
@@ -1292,7 +1293,7 @@ img {
     font-family: var(--font-body);
     font-size: 0.8rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }

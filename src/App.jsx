@@ -11,6 +11,7 @@ import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import FadeInSection from './components/FadeInSection'
 import Chatbot from './components/Chatbot'
+import Footer from './components/Footer'
 
 import { ReactLenis } from '@studio-freight/react-lenis'
 
@@ -28,6 +29,7 @@ function App() {
         <Projects />
         <FadeInSection><Certificates /></FadeInSection>
         <FadeInSection><Contact /></FadeInSection>
+        <Footer />
       </main>
       <Chatbot />
     </ReactLenis>

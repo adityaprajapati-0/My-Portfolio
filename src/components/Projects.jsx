@@ -104,7 +104,7 @@ export default function Projects() {
               '--card-z': i + 1,
               top: `${80 + i * 5}px`,
               zIndex: i + 1,
-              marginBottom: i < PROJECTS.length - 1 ? '15vh' : '5vh',
+              marginBottom: i < PROJECTS.length - 1 ? 'var(--project-margin)' : 'var(--project-margin)',
             }}
           >
             <div className="stack-card">

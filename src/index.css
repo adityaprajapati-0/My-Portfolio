@@ -681,6 +681,35 @@ img {
 /* ===========================
    SERVICES — WHITE BACKGROUND
    =========================== */
+.light-mode .services-white {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.light-mode .services-white-heading {
+    color: #FFFFFF;
+}
+
+.light-mode .service-item-white {
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .service-item-white:first-child {
+    border-top: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .service-white-number {
+    color: #FFFFFF;
+}
+
+.light-mode .service-white-title {
+    color: #FFFFFF;
+}
+
+.light-mode .service-white-desc {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .services-white {
     position: relative;
     z-index: 3;

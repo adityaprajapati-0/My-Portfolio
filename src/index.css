@@ -698,18 +698,6 @@ img {
     border-top: 1.5px solid rgba(255, 255, 255, 0.1);
 }
 
-.light-mode .service-white-number {
-    color: #FFFFFF;
-}
-
-.light-mode .service-white-title {
-    color: #FFFFFF;
-}
-
-.light-mode .service-white-desc {
-    color: rgba(255, 255, 255, 0.7);
-}
-
 .services-white {
     position: relative;
     z-index: 3;
@@ -1727,6 +1715,31 @@ textarea.field-input {
     padding: 20px;
 }
 
+/* Light Mode Overrides for Certificate Cards */
+.light-mode .cert-card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .cert-title {
+    color: #000;
+}
+
+.light-mode .cert-issuer {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.light-mode .cert-tag {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.light-mode .cert-dot {
+    color: #000;
+    opacity: 0.3;
+}
+
 .cert-modal-content {
     background: #0a0a0a;
     border: 1.5px solid rgba(255, 255, 255, 0.2);
@@ -1827,8 +1840,28 @@ textarea.field-input {
     line-height: 1.6;
 }
 
-.light-mode .cert-modal-desc {
+/* Light Mode Overrides for Certificate Modal */
+.light-mode .cert-modal-content {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .cert-close {
     color: #000;
+}
+
+.light-mode .cert-modal-desc {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.light-mode .cert-modal-title {
+    color: #000;
+}
+
+.light-mode .cert-modal-issuer {
+    color: var(--accent);
+    /* Keep accent or adjust if needed */
 }
 
 .cert-card-inner {

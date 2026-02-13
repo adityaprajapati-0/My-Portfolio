@@ -29,8 +29,6 @@ Integrated a custom-trained AI mascot powered by **Llama 3**.
 
 ---
 
----
-
 ## ✨ Features at a Glance
 
 - **Maximum SEO**: Saturated brand signals to dominate "adixdd" search results.

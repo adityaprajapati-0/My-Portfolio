@@ -19,7 +19,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     // Check if backend is alive
-    fetch('https://my-ai-1ss5.onrender.com/api/health')
+    fetch('https://my-ai.adi-ai-chatbot.workers.dev/api/health')
       .then(r => r.json())
       .then(data => console.log("Backend Health:", data))
       .catch(err => console.error("Backend unreachable:", err));
@@ -40,7 +40,7 @@ export default function Chatbot() {
     setIsTyping(true)
 
     try {
-      const response = await fetch('https://my-ai-1ss5.onrender.com/api/chat', {
+      const response = await fetch('https://my-ai.adi-ai-chatbot.workers.dev/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

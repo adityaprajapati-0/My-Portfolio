@@ -26,16 +26,16 @@ export default function ScrollBundles() {
     offset: ["start end", "end start"]
   })
 
-  // Smooth the scroll progress for buttery movement
+  // Smooth the scroll progress for buttery movement (matching Reviews component)
   const smoothProgress = useSpring(scrollYProgress, {
-    damping: 15,
+    damping: 20,
     stiffness: 100,
     restDelta: 0.001
   })
 
-  // Transforms for the strips
-  const x1 = useTransform(smoothProgress, [0, 1], [0, -400])
-  const x2 = useTransform(smoothProgress, [0, 1], [-200, 200])
+  // Transforms for the strips (reduced range for smoother mobile experience)
+  const x1 = useTransform(smoothProgress, [0, 1], [-200, 200])
+  const x2 = useTransform(smoothProgress, [0, 1], [200, -200])
 
   // Build repeated items for continuous feel
   const techRow = [...TECH_ITEMS, ...TECH_ITEMS, ...TECH_ITEMS, ...TECH_ITEMS]

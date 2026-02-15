@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { motion, useScroll, useTransform, useVelocity, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
 const TECH_ICONS = [
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -19,51 +19,45 @@ const TECH_ICONS = [
 
 export default function TechIcons() {
   const containerRef = useRef(null)
-  const doubledIcons = [...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS]
+  // Repeat icons 10 times to ensure complete coverage
+  const repeatedIcons = [
+    ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS,
+    ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS
+  ]
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   })
 
-  // Velocity-based move boost
-  const scrollVelocity = useVelocity(scrollYProgress)
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  })
-
-  // Smoothing the scroll progress itself for ultra-smooth movement
+  // Smooth scroll progress (matching Reviews component)
   const smoothProgress = useSpring(scrollYProgress, {
     damping: 20,
     stiffness: 100,
     restDelta: 0.001
   })
 
-  // Base auto-scroll + speed boost from scrolling
-  // We use a CSS animation for the base loop and Framer Motion for the boost
-  const velocityFactor = useTransform(smoothVelocity, [0, 5], [1, 5], {
-    clamp: false
-  })
+  // Horizontal movement based on scroll - starting from left to avoid initial gaps
+  const x = useTransform(smoothProgress, [0, 1], [-600, 0])
 
   return (
     <div className="tech-icons-strip-wrapper" ref={containerRef}>
       <div className="tech-icons-marquee">
         <motion.div 
           className="tech-icons-track"
-          style={{ x: useTransform(smoothProgress, [0, 1], [0, -1000]) }}
+          style={{ x }}
         >
-          {doubledIcons.map((tech, index) => (
+          {repeatedIcons.map((tech, index) => (
             <motion.div 
               key={`${tech.name}-${index}`} 
               className="tech-icon-item"
-              initial={{ rotate: -5 }}
+              initial={{ rotate: -2 }}
               animate={{ 
-                rotate: [-5, 5, -5],
-                y: [0, -10, 0]
+                rotate: [-2, 2, -2],
+                y: [0, -5, 0]
               }}
               transition={{
-                duration: 4 + (index % 3),
+                duration: 5 + (index % 3),
                 repeat: Infinity,
                 ease: "easeInOut"
               }}

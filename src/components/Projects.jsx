@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useLenis } from '@studio-freight/react-lenis'
 import HollowText from './HollowText'
@@ -178,11 +179,20 @@ export default function Projects() {
       </AnimatePresence>
 
       {/* Project Detail Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="project-modal-overlay" onClick={closeModal}>
+      {/* Project Detail Modal */}
+      {selectedProject && createPortal(
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key="modal-overlay"
+            className="project-modal-overlay" 
+            onClick={closeModal}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <motion.div 
               className="project-modal-content"
+              key="modal-content"
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 50, scale: 0.95 }}
@@ -227,9 +237,10 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   )
 }

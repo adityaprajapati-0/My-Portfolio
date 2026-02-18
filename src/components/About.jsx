@@ -57,7 +57,7 @@ export default function About() {
         {/* Animated Side Elements - Exactly like reference */}
         {decorativeElements.map((el) => {
           const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-          const mobileScale = isMobile ? 0.6 : 1;
+          const mobileScale = isMobile ? 1.1 : 1;
           const rotationAngle = el.side === 'left' ? -25 : 25;
 
           return (
